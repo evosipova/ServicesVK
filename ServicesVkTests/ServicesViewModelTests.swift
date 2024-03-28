@@ -1,13 +1,13 @@
 //
-//  ServicesVkUITests.swift
-//  ServicesVkUITests
+//  ServicesViewModelTests.swift
+//  ServicesVkTests
 //
-//  Created by Elizaveta Osipova on 3/28/24.
+//  Created by Elizaveta Osipova on 3/29/24.
 //
 
 import XCTest
 
-final class ServicesVkUITests: XCTestCase {
+final class ServicesViewModelTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
