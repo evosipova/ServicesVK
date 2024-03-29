@@ -15,12 +15,13 @@ enum LoadingState {
     case loaded
 }
 
-class ServicesViewModel: ObservableObject {
+final class ServicesViewModel: ObservableObject {
     @Published var services = [Service]()
     @Published var errorAlert: ErrorAlert?
     @Published var loadingState = LoadingState.idle
 
     private var networkService: NetworkServiceProtocol
+    private let servicesURL = URL(string: "https://publicstorage.hb.bizmrg.com/sirius/result.json")!
 
     init(networkService: NetworkServiceProtocol = NetworkService()) {
         self.networkService = networkService
@@ -28,8 +29,7 @@ class ServicesViewModel: ObservableObject {
 
     func loadServices() {
         self.loadingState = .loading
-        let url = URL(string: "https://publicstorage.hb.bizmrg.com/sirius/result.json")
-        networkService.load(url: url) { [weak self] (result: Result<ResponseData, NetworkError>) in
+        networkService.load(url: servicesURL) { [weak self] (result: Result<ResponseData, NetworkError>) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let responseData):
